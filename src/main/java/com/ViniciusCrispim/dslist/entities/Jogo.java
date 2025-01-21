@@ -18,9 +18,9 @@ public class Jogo {
     private Double pontuacao;
     private String imgUrl;
 
-    @Column()
+    @Column(columnDefinition = "TEXT")
     private String descricaoCurta;
-    @Column()
+    @Column(columnDefinition = "TEXT")
     private String descricaoLonga;
 
     public Jogo() {}
