@@ -3,12 +3,14 @@ package com.ViniciusCrispim.dslist.services;
 import com.ViniciusCrispim.dslist.dto.JogoDTO;
 import com.ViniciusCrispim.dslist.dto.JogoMinDTO;
 import com.ViniciusCrispim.dslist.entities.JogoEntity;
+import com.ViniciusCrispim.dslist.projections.JogoMinProjection;
 import com.ViniciusCrispim.dslist.repositories.JogoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JogoService {
@@ -26,5 +28,11 @@ public class JogoService {
     public JogoDTO buscarJogoPorId(Long id){
         JogoEntity jogo = jogoRespository.findById(id).get();
         return new JogoDTO(jogo);
+    }
+
+    @Transactional(readOnly = true)
+    public List<JogoMinDTO> buscarJogosPorLista(Long listaId){
+        List<JogoMinProjection> jogos = jogoRespository.buscarPorLista(listaId);
+        return jogos.stream().map(JogoMinDTO::new).toList();
     }
 }

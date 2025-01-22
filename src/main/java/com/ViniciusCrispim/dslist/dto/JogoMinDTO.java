@@ -1,6 +1,7 @@
 package com.ViniciusCrispim.dslist.dto;
 
 import com.ViniciusCrispim.dslist.entities.JogoEntity;
+import com.ViniciusCrispim.dslist.projections.JogoMinProjection;
 
 public class JogoMinDTO {
     private Long id;
@@ -11,12 +12,19 @@ public class JogoMinDTO {
 
     public JogoMinDTO() {}
 
-    public JogoMinDTO(JogoEntity jogo) {
-        id = jogo.getId();
-        titulo = jogo.getTitulo();
-        ano = jogo.getAno();
-        imgUrl = jogo.getImgUrl();
-        descricaoCurta = jogo.getDescricaoCurta();
+    public JogoMinDTO(JogoEntity entity) {
+        id = entity.getId();
+        titulo = entity.getTitulo();
+        ano = entity.getAno();
+        imgUrl = entity.getImgUrl();
+        descricaoCurta = entity.getDescricaoCurta();
+    }
+    public JogoMinDTO(JogoMinProjection projection) {
+        id = projection.getId();
+        titulo = projection.getTitulo();
+        ano = projection.getAno();
+        imgUrl = projection.getImgUrl();
+        descricaoCurta = projection.getDescricaoCurta();
     }
 
     public Long getId() {
