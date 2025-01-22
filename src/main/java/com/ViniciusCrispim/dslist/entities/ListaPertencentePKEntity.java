@@ -7,18 +7,18 @@ import jakarta.persistence.ManyToOne;
 import java.util.Objects;
 
 @Embeddable //Representa dois campos na tabela
-public class ListaPertencentePK {
+public class ListaPertencentePKEntity {
 
     @ManyToOne
     @JoinColumn(name = "jogo_id")
     private JogoEntity jogo;
     @ManyToOne
     @JoinColumn(name = "lista_id")
-    private JogoLista lista;
+    private ListaDeJogosEntity lista;
 
-    public ListaPertencentePK() {}
+    public ListaPertencentePKEntity() {}
 
-    public ListaPertencentePK(JogoEntity jogo, JogoLista lista) {
+    public ListaPertencentePKEntity(JogoEntity jogo, ListaDeJogosEntity lista) {
         this.jogo = jogo;
         this.lista = lista;
     }
@@ -31,18 +31,18 @@ public class ListaPertencentePK {
         this.jogo = jogo;
     }
 
-    public JogoLista getLista() {
+    public ListaDeJogosEntity getLista() {
         return lista;
     }
 
-    public void setLista(JogoLista lista) {
+    public void setLista(ListaDeJogosEntity lista) {
         this.lista = lista;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        ListaPertencentePK that = (ListaPertencentePK) o;
+        ListaPertencentePKEntity that = (ListaPertencentePKEntity) o;
         return Objects.equals(jogo, that.jogo) && Objects.equals(lista, that.lista);
     }
 

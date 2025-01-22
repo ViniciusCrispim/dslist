@@ -8,27 +8,27 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_lista_pertencente")
-public class ListaPertencente {
+public class ListaPertencenteEntity {
 
     //Representa chave primária múltipla
     @EmbeddedId
-    private ListaPertencentePK id = new ListaPertencentePK();
+    private ListaPertencentePKEntity id = new ListaPertencentePKEntity();
 
     private Integer posicao;
 
-    public ListaPertencente() {}
+    public ListaPertencenteEntity() {}
 
-    public ListaPertencente(JogoEntity jogo, JogoLista lista, Integer posicao) {
+    public ListaPertencenteEntity(JogoEntity jogo, ListaDeJogosEntity lista, Integer posicao) {
         id.setJogo(jogo);
         id.setLista(lista);
         this.posicao = posicao;
     }
 
-    public ListaPertencentePK getId() {
+    public ListaPertencentePKEntity getId() {
         return id;
     }
 
-    public void setId(ListaPertencentePK id) {
+    public void setId(ListaPertencentePKEntity id) {
         this.id = id;
     }
 
@@ -43,7 +43,7 @@ public class ListaPertencente {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        ListaPertencente that = (ListaPertencente) o;
+        ListaPertencenteEntity that = (ListaPertencenteEntity) o;
         return Objects.equals(id, that.id);
     }
 

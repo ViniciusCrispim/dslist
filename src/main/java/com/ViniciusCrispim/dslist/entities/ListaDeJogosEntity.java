@@ -6,16 +6,16 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_jogo_lista")
-public class JogoLista {
+public class ListaDeJogosEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
-    public JogoLista() {}
+    public ListaDeJogosEntity() {}
 
-    public JogoLista(Long id, String nome) {
+    public ListaDeJogosEntity(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -39,7 +39,7 @@ public class JogoLista {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        JogoLista jogoLista = (JogoLista) o;
+        ListaDeJogosEntity jogoLista = (ListaDeJogosEntity) o;
         return Objects.equals(id, jogoLista.id);
     }
 
